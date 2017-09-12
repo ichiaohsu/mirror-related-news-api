@@ -9,6 +9,7 @@ COPY extract_features.py /extract_features.py
 COPY get_related_news.py /get_related_news.py
 COPY feed_to_redis.py /feed_to_redis.py
 COPY app.py /app.py
+COPY settings.py /settings.py
 COPY dict/ /dict/
 COPY fallback/ /fallback/
 
