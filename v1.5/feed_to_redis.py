@@ -2,10 +2,11 @@ from redis import Redis
 import os
 import pandas as pd
 import json
+from settings import REDIS_URL, REDIS_AUTH
 
 #r = Redis(host='localhost',port=6379)
 # this is for docker
-r = Redis(host='redis',port=6379)
+r = Redis(host=REDIS_URL, port=6379, password=REDIS_AUTH)
 
 def load_data(r=r,source_dir = "output/", mode="batch"):
     if not mode in ["batch","recent"]:

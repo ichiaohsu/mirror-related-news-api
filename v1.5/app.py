@@ -7,13 +7,13 @@ import pandas as pd
 from redis import Redis
 from feed_to_redis import load_data
 import ast
-from settings import REDIS_URL
+from settings import REDIS_URL, REDIS_AUTH
 
 max_k = 20
 app = Flask(__name__)
 # this is for docker
 # r = Redis(host='redis',port=6379)
-r = Redis(host= REDIS_URL, port=6379)
+r = Redis(host=REDIS_URL, port=6379, password=REDIS_AUTH)
 
 @app.route('/related_news')
 def get_knn():
@@ -40,11 +40,7 @@ def get_knn():
     return jsonify(make_dict(news_ids_list,k,debug))
 
 
-<<<<<<< HEAD
 def make_dict(news_ids_list,k,debug):
-=======
-def make_dict(news_ids_list, k, debug, news_dict):
->>>>>>> seperate redis setting to settings.py
     json_dict = dict()
     json_dict['result']=[]
 
