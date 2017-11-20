@@ -2,9 +2,11 @@ from redis import Redis
 import os
 import pandas as pd
 import json
+from settings import REDIS_URL, REDIS_AUTH
 
 # redis connect string
-r = Redis(host='localhost',port=6379)
+# r = Redis(host='localhost',port=6379)
+r = Redis(host=REDIS_URL, port=6379, password=REDIS_AUTH)
 
 def get_facets(df,r_id,fields = ['_id','features','category','title']):    
     """
